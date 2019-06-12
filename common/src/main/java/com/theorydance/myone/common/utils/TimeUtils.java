@@ -1,5 +1,9 @@
 package com.theorydance.myone.common.utils;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,6 +15,35 @@ import org.apache.commons.lang.StringUtils;
 
 public class TimeUtils {
 
+	public static List<String> webUrlList = new ArrayList<>();
+    static{ // 网络时间对应的服务器
+        webUrlList.add("http://www.baidu.com");
+        webUrlList.add("http://www.taobao.com");
+        webUrlList.add("http://www.ntsc.ac.cn");
+        webUrlList.add("http://www.360.cn");
+        webUrlList.add("http://www.beijing-time.org");
+        webUrlList.add("http://www.bjtime.cn");
+    }
+    
+    public static long getPublicTimeStamp() {
+		for (int i = 0; i < webUrlList.size(); i++) {
+            try {
+                URL url = new URL(webUrlList.get(i));// 取得资源对象
+                URLConnection uc = url.openConnection();// 生成连接对象
+                uc.setReadTimeout(500);
+                uc.setConnectTimeout(500);
+                uc.connect();// 发出连接
+                long ld = uc.getDate();// 读取网站日期时间
+                return ld;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
+	}
+	
 	public enum TIME_PERIOD {
 		START_AND_END_SECOND_BY_HOUR("yyyy-MM-dd HH"),
 		START_AND_END_HOUR_BY_TODAY("yyyy-MM-dd"),

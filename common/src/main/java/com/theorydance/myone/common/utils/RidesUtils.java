@@ -14,7 +14,7 @@ import redis.clients.jedis.JedisPoolConfig;
 @Slf4j
 public class RidesUtils {
 	
-	 //Redis服务器IP
+	//Redis服务器IP
     private static String ADDR = "139.159.243.179";
     
     //Redis的端口号
@@ -159,9 +159,7 @@ public class RidesUtils {
 		return ret;
 	}
 
-	
-	
-	/*
+	/**
 	 * Redis Append 命令用于为指定的 key追加值。
 	 */
 	public static String appendString(String key,String content){
