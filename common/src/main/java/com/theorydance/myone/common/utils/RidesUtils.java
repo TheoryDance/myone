@@ -15,7 +15,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RidesUtils {
 	
 	//Redis服务器IP
-    private static String ADDR = "139.159.243.179";
+    private static String ADDR = "127.0.0.1";
     
     //Redis的端口号
     private static int PORT = 6379;
@@ -86,7 +86,7 @@ public class RidesUtils {
     }
 
 	
-	/*
+	/**
 	 * 保存字符串到rides
 	 */
 	public static boolean saveString(String key,String value){
@@ -106,7 +106,7 @@ public class RidesUtils {
 		return false;
 	}
     
-	/*
+	/**
 	 * rides获取保存的数据
 	 */
 	public static String queryString(String key){
@@ -126,7 +126,7 @@ public class RidesUtils {
 		return ret;
 	}
 	
-	/*
+	/**
 	 * rides获取保存的数据
 	 */
 	public static String queryStringNOExpire(String key){

@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -564,4 +565,11 @@ public class SystemUtils {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+     * 获取32位的UUID，即去掉了中间的横线分隔符
+     */
+    public static String getUUID32(){
+    	return UUID.randomUUID().toString().replace("-", "");
+    }
 }

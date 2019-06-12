@@ -20,7 +20,5 @@ public class SecurityUtils {
 		}
 		return ccc;
 	}
-	public static void main(String[] args) {
-		System.out.println(base64Encode("ranfs"));
-	}
+	
 }
